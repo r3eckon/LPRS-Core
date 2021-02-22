@@ -30,4 +30,27 @@ As I'm not experienced with STM Cube IDE the Arduino IDE has been used.
 Blackpills come with USB Bootloader preinstalled so no special setup is required.
 Arduino IDE must be configured to work with board, various tutorials are on YouTube.
 
-Board to Board configuration involves setting the various #define at the top of the file to correct address and sensor ID.
+Board to Board configuration involves setting the various #define at the top of the file to correct address, sensor ID, delay, etc.
+Customize the defines as needed. This system is NOT a mesh network therefore creating a node graph radio link map is advisable.
+
+REYAX Lora module uses the following format : +RCV=ADD,LEN,DATA,RSSI,SNR
+
+* ADD: Address of Lora module sending data
+* LEN: Length of received data
+* DATA: Actual data string received 
+* RSSI: Received Signal Strength Indicator
+* SNR: Signal To Noise Ratio
+
+The DATA part is formatted by the MCU code like this : ID_DATA
+
+* ID: ID Value used by Pi receiver to distinguish between different Sensor Data received from a same Lora address
+* DATA: Sensor Data mostly in the form of an integer value from 0 to 4096 (ADC Range of MCU)
+
+## Module Information
+MCU : https://github.com/WeActTC/MiniF4-STM32F4x1
+
+Lora Module : http://reyax.com.cn/wp-content/uploads/2017/09/RYLR896_EN.pdf
+
+Pressure Sensor : https://www.nxp.com/docs/en/data-sheet/MPX4250D.pdf
+
+Distance Sensor : https://www.jahankitshop.com/getattach.aspx?id=4635&Type=Product
